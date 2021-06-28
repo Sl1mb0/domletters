@@ -1,0 +1,11 @@
+#!/usr/bin/python
+
+# Test to print each file as array of strings
+
+with open('sentence.txt') as file:
+    sentenceWords = [word for line in file for word in line.split()]
+print(sentenceWords)
+
+with open('swift.txt') as file: 
+    swiftWords = [word for line in file for word in line.split()]
+print(swiftWords)
