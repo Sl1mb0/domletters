@@ -1,0 +1,40 @@
+#!/usr/bin/python3
+
+import sys
+
+# find the maximum value in an array.
+def max(array):
+    m = array[0]
+    for num in array:
+        if m < num:
+            m = num
+    return m
+
+# There are 26 letters in the alphabet;
+# each letter will serve as a key to a value
+# that will be incremented each time that letter is found in `word`.
+# Since we are only concerned with 'alphabetic words'
+# if any non-alphabetical characters are encountered, return 0.
+def domCount(word):
+    letters = [0]*26; 
+    for letter in word:
+        val = ord(letter.lower())
+        if val >= ord('a') and val <= ord('z'):
+            letters[val%26] += 1
+        else:
+            return 0
+    return max(letters)
+
+# Count up the total dominant
+# letter counts for all words in an array of words.
+def domTotal(words):
+    total = 0
+    for word in words:
+        total += domCount(word)
+    return total
+
+def main():
+    print(domTotal([word for line in sys.stdin for word in line.split()]))
+        
+if __name__ == "__main__":
+    main()
